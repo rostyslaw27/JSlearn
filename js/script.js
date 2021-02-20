@@ -1,27 +1,15 @@
 "use strict";
 
-let number = 4.6;
+alert("Hello");
 
-console.log(-4/0);
-console.log('string' * 9);
+const result = confirm("Are you here?");
 
-const person = `5`;
+const answer = +prompt("Are you 18?", "18");
 
-const bool = true;
+const answers = [];
 
-console.log(something); //null
+answers[0]= prompt("Name?", "");
+answers[1]= prompt("Surname?", "");
+answers[2]= prompt("How old are you?", "");
 
-let und;
-console.log(und);
-
-const obj = {
-    name: "John",
-    age: 25,
-    isMarried: false
-};
-
-console.log(obj.name);
-console.log(obj["name"]);
-
-let arr = ['plum.png', 'orange.jpg', 6, {}, []];
-console.log(arr[1]);
+document.write(answers);
