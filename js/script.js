@@ -1,23 +1,24 @@
 "use strict";
 
-function showFirstMessage(text) {
-    console.log(text);
-    let num = 20;
-}
+const str = 'test';
 
-showFirstMessage('Hello world!');
-console.log(num);
+console.log(str.length);
+console.dir(Number);
 
-console.log(calc(4, 4));
+console.log(str.toUpperCase());
 
-function calc(a, b) {
-    return (a+b);
-}
+console.log(str.indexOf('s'));
 
-const logger = function() {
-    console.log('Hello');
-};
+const logg = 'Hello World';
 
-logger();
+console.log(logg.slice(6, 11));
 
-const calcl = (a, b) => { return a + b };
+console.log(logg.substring(6, 11));
+
+console.log(logg.substr(6, 5));
+
+const num = 12.2;
+console.log(Math.round(num));
+
+const test = '12.2px';
+console.log(parseInt(test));
