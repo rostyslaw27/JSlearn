@@ -1,17 +1,20 @@
 "use strict";
 
-let x = 5; alert(x++); //x=5
+const box = document.getElementById('box');
+console.log(box);
 
-console.log([] + false - null + true); //Nan 
+const btns = document.getElementsByTagName('button');
+console.log(btns[0]);
 
-console.log([] + 1 + 2); //"12"
+const circles = document.getElementsByClassName('circle');
+console.log(circles);
 
-alert('1'[0]); //1
+const hearts = document.querySelectorAll('.heart');
+console.log(hearts);
 
-console.log(2 && 1 && null && 0 && undefined); // NULL   і зупиняється на false, або на true
+hearts.forEach(item => {
+    console.log(item);
+});
 
-console.log(!!( 1 && 2 ) === ( 1 && 2)); // false (!! - to bool)
-
-alert( null || 2&&3 || 4); //3
-
-alert(+'Infinity'); //Infinity
+const oneHeart = document.querySelector('.heart');
+console.log(oneHeart);
