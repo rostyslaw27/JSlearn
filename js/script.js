@@ -1,46 +1,50 @@
-"use strict";
+/* Задания на урок:
 
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      wrapper = document.querySelector('.wrapper'),
-      hearts = wrapper.querySelectorAll('.heart'),
-      oneHeart = wrapper.querySelector('.heart');
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
 
-box.style.backgroundColor = 'blue';
-box.style.width = '500px';
+2) Изменить жанр фильма, поменять "комедия" на "драма"
 
-box.style.cssText = 'background-color: blue; width: 500px';
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
 
-btns[1].style.borderRadius = '100%';
-circles[0].style.backgroundColor = 'red';
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+5) Добавить нумерацию выведенных фильмов */
+
+'use strict';
+
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
+
+const adv = document.querySelectorAll('.promo__adv img'),
+      poster = document.querySelector('.promo__bg'),
+      genre = poster.querySelector('.promo__genre'),
+      movieList = document.querySelector('.promo__interactive-list');
+
+adv.forEach(item => {
+    item.remove();
 });
 
-const div = document.createElement('div');
-const text = document.createTextNode('I have been here');
+genre.textContent = 'драма';
 
-div.classList.add('black');
+poster.style.backgroundImage = 'url("img/bg.jpg")';
 
-document.body.append(div);
+movieList.innerHTML = '';
 
-wrapper.append(div);
+movieDB.movies.sort();
 
-wrapper.prepend(div);
-
-hearts[0].before(div);
-hearts[0].after(div);
-
-circles[0].remove();
-
-hearts[0].replaceWith(circles[0]);
-
-div.innerHTML = "<h1>Hello World</h1>";
-div.textContent = "Hello";
-
-div.insertAdjacentHTML('', '<h2>Hello</h2>');
-div.insertAdjacentHTML("beforeend", '<h2>Hello</h2>');
-div.insertAdjacentHTML('afterbegin', '<h2>Hello</h2>');
-div.insertAdjacentHTML('afterend', '<h2>Hello</h2>');
+movieDB.movies.forEach((film, i) => {
+    movieList.innerHTML += `
+        <li class="promo__interactive-item">${i + 1} ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
