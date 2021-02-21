@@ -1,39 +1,31 @@
 "use strict";
 
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function() {
-        console.log('Test');
-    }
-};
+const arr = [1, 2, 3, 6, 8];
 
-options.makeTest();
+arr.pop();
+arr.push(10);
 
-const {border, bg} = options.colors;
-console.log(border);
-
-console.log(options["colors"]["border"]);
-
-delete options.name;
-
-let counter = 0;
-for (let key in options) {
-    if (typeof(options[key]) === 'object') {
-        for (let i in options[key]) {
-            console.log(`Property ${i} have value ${options[key][i]}`);
-            counter++;
-        }
-    } else {
-        console.log(`Property ${key} have value ${options[key]}`);
-        counter++;
-    }
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
 }
-console.log(counter);
 
-console.log(Object.keys(options).length);
+for (let value of arr) {
+    console.log(value);
+}
+
+arr.forEach(function(item, i, arr) {
+    console.log(`${i}: ${item} in array ${arr}`);
+});
+
+const str = prompt('', '');
+const products = str.split(', ');
+products.sort();
+console.log(products.join('; '));
+
+const arr2 = [2, 13, 26, 8, 10];
+
+arr2.sort(compareNum);
+
+function compareNum(a, b) {
+    return a-b;
+}
