@@ -1,32 +1,17 @@
 "use strict";
 
-//1)
-console.log(typeof(String(null)));
-console.log(typeof(String(4)));
+let x = 5; alert(x++); //x=5
 
-//2)
-console.log(typeof(5 + ''));
+console.log([] + false - null + true); //Nan 
 
-const num = 5;
+console.log([] + 1 + 2); //"12"
 
-console.log('https://vk.com/catalog/' + num);
+alert('1'[0]); //1
 
-const fontSize = 26 + 'px';
+console.log(2 && 1 && null && 0 && undefined); // NULL   і зупиняється на false, або на true
 
-//To Number
+console.log(!!( 1 && 2 ) === ( 1 && 2)); // false (!! - to bool)
 
-//1)
-console.log(typeof(Number('4')));
+alert( null || 2&&3 || 4); //3
 
-//2)
-console.log(typeof(+'5'));
-
-//3)
-console.log(typeof(parseInt('15px', 10)));
-
-// To bool
-
-console.log(typeof(Boolean('4')));
-
-console.log(typeof(!!"4"));
-
+alert(+'Infinity'); //Infinity
