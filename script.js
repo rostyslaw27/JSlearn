@@ -1,33 +1,19 @@
-// touchstart
-// touchmove
-// touchend
-// touchenter
-// touchleave
-// touchcancel
+"use strict";
+// defer - загружає скрипт в фоновому режимі, чекає поки не загрузиться DOM
+const p = document.querySelectorAll('p');
+console.log(p);
 
-window.addEventListener('DOMContentLoaded', () => {
-    const box = document.querySelector('.box');
+// async - загружає скрипт в фоновому режимі, не чекає загрузки DOM
 
-    box.addEventListener('touchstart', (e) => {
-        e.preventDefault();
 
-        console.log('Start');
-        console.log(e.touches);
-    });
+//dynamic
 
-    box.addEventListener('touchmove', (e) => {
-        e.preventDefault();
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src;
+    script.async = false;
+    document.body.append(script);
+}
 
-        console.log('Move');
-    });
-
-    box.addEventListener('touchend', (e) => {
-        e.preventDefault();
-
-        console.log('End');
-    });
-});
-
-// touches
-// target touches
-// changedTouches (end touches)
+loadScript("js/test.js");
+loadScript("js/some.js");
