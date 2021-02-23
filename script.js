@@ -1,41 +1,29 @@
-const btn = document.querySelector('.btn');
-let timerID,
-    i = 0;
+'use strict';
 
+const now = new Date(); 
 
-function myAnimation() {
-    const elem = document.querySelector('.box');
-    let pos = 0;
+console.log(now);
+// місяць рахується з нуля, від години віднімається часовий пояс
+// відлік йде з 1970 року
+// 0 - неділя
 
-    const id = setInterval(frame, 10);
-    function frame() {
-        if (pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + "px";
-            elem.style.left = pos + 'px';
-        }
-    }
-}
-btn.addEventListener('click', () => {
-    timerID = setTimeout(logger, 500);
-    timerID = setInterval(logger, 500); //не чекає на виконання функції
-});
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getDay());
+console.log(now.getUTCHours());
 
-btn.addEventListener('click', myAnimation);
+console.log(now.getTimezoneOffset());
+console.log(now.getTime());
 
-clearInterval(timerID);
+console.log(now.setHours(18));
 
-function logger () {
-    if (i === 3) {
-        clearInterval(timerID);
-    }
-    console.log('text');
-    i++;
+let start = new Date();
+
+for (let i = 0; i < 100000; i++) {
+    let some = i ** 3; //піднесення до степеня
 }
 
-let id = setTimeout(function log() {
-    console.log('Hello');
-    id = setTimeout(log, 500);
-}, 500);// правильне виконання
+let end = new Date();
+
+alert(`${end - start}`);
