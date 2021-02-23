@@ -1,19 +1,38 @@
-"use strict";
-// defer - загружає скрипт в фоновому режимі, чекає поки не загрузиться DOM
-const p = document.querySelectorAll('p');
-console.log(p);
+const btns = document.querySelectorAll('button'),
+      wrapper = document.querySelector('.btn-block');
 
-// async - загружає скрипт в фоновому режимі, не чекає загрузки DOM
+console.log(btns[0].classList.length); // кількість класів в кнопки
 
+console.log(btns[0].classList.item(0)); //перший клас
 
-//dynamic
+console.log(btns[0].classList.add('red', 'green')); // додавання класу
 
-function loadScript(src) {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = false;
-    document.body.append(script);
+console.log(btns[0].classList.remove('blue'));
+
+console.log(btns[0].classList.toggle('blue')); // якщо є - видаляє, якщо немає - додає
+
+if (btns[1].classList.contains('red')) {
+    console.log('red');
 }
 
-loadScript("js/test.js");
-loadScript("js/some.js");
+btns[0].addEventListener('click', () => {
+    if(!btns[1].classList.contains('red')) {
+        btns[1].classList.add('red');
+    } else {
+        btns[1].classList.remove('red');
+    }
+
+    btns[1].classList.toggle('red');
+});
+
+console.log(btns[0].className);
+
+wrapper.addEventListener('click', (event) => {
+    if (event.target && event.target.tagName == 'BUTTON' && event.target.matches('button.red')) {
+        console.log('Hello');
+    }
+}); // делегування
+
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
