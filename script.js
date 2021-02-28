@@ -1,76 +1,29 @@
 "use strict";
 
-function showThis(a, b) {
-    console.log(this);
-    function sum() {
-        console.log(this);
-        return a + b;
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width;
     }
-    console.log(sum());
-}
-showThis(4, 5);
 
-
-const obj ={
-    a: 20,
-    b: 15,
-    sum: function() {
-        console.log(this);
+    calcArea() {
+        return this.height * this.width;
     }
-};
-obj.sum();
-
-
-function User(name, id) {
-    this.name = name;
-    this.id = id;
-    this.human = true;
-    this.hello = function() {
-        console.log(`Hello ${this.name}`);
-    };
 }
 
-
-function sayName(surname) {
-    console.log(this);
-    console.log(this.name + surname);
-}
-const user = {
-    name: 'John'
-};
-sayName.call(user, 'Smith');
-sayName.apply(user, ['Smith']);
-
-
-function count(num) {
-    return this*num;
-}
-const double = count.bind(2);
-console.log(double(3));
-
-//1) this = window, use strict = undefined
-//2) Контекст у методів об'єкта буде сам об'єкт
-//3) this в конструкторах і класах - новий екземпляр об'єкта
-//4) Ручна прив'язка this: call, apply, bind
-
-const btn = document.querySelector('button');
-
-btn.addEventListener('click', function() {
-    console.log(this); // контекстом є сам елемент
-    this.style.backgroundColor = 'red';
-});
-
-const obj1 = {
-    num: 5,
-    sayNumber: function() {
-        const say = () => {
-            console.log(this); // стрілочна функція не має контексту виклику, вона бере його у батька
-        };
-
-        say();
+class ColoredRectangleWithText extends Rectangle {
+    constructor(height, width, text, bgColor) {
+        super(height, width); // додає присвоєння конструктора батька ЗАВЖДИ ПОВИННА БУТИ ПЕРШОЮ
+        this.text = text;
+        this.bgColor = bgColor;
     }
-};
 
-obj.sayNumber();
+    showMyProps() {
+        console.log(`Text: ${this.text}`);
+    }
+}
 
-const double11 = a => a * 2;
+const square = new Rectangle(10, 10);
+const long = new Rectangle(20, 100);
+
+console.log(square.calcArea());
