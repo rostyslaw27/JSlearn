@@ -1,10 +1,31 @@
 'use strict';
 
-localStorage.setItem('number', 5);
+/* new RegExp('pattern', 'flags');
+/pattern/f */
 
-localStorage.getItem('number');
+const ans = prompt('Введите ваше имя');
 
-localStorage.removeItem('number');
+const reg = /n/;
+console.log(reg.test(ans));
 
-localStorage.clear();
+//i - без залежності від регістра
+//g - декілька входжень
+//m -багато стрічок
 
+// \d - числа
+// \w - слова
+// \s - space
+
+console.log(ans.search(reg));
+console.log(ans.match(reg));
+
+const pass = prompt('Password');
+
+console.log(pass.replace(/./g,'*')); //. - all elements \. - .
+console.log('12-34-56'.replace(/-/g, ':'));
+
+const str = 'My name is R2D2';
+console.log(str.match(/\w\d\w\d/i));
+
+// \D - не числа
+// \W - не слова
