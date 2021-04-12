@@ -1,25 +1,29 @@
-'use strict';
+import tabs from './modules/tabs';
+import modal from './modules/modal';
+import timer from './modules/timer';
+import cards from './modules/cards';
+import calc from './modules/calc';
+import forms from './modules/forms';
+import slider from './modules/slider';
+import {openModal} from './modules/modal';
 
-const number = 1;
+window.addEventListener('DOMContentLoaded', () => {
+    const modalTimerID = setTimeout(() => openModal('.modal', modalTimerID), 500000); // super trick
 
-// 1
-(function() {
-    let number = 2;
-    console.log(number);
-    console.log(number + 3);
-}());
-
-console.log(number);
-
-// 2
-const user = (function(){
-    const privat = function() {
-        console.log('I am privat!');
-    };
-
-    return {
-        sayHello: privat
-    };
-}());
-
-user.sayHello();
+    tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__item_active');
+    modal('[data-modal]', '.modal', modalTimerID);
+    timer('.timer', '2021-06-01');
+    cards();
+    calc();
+    forms('form', modalTimerID);
+    slider({
+        container: '.offer__slider',
+        nextArrow: '.offer__slider-next',
+        slide: '.offer__slide',
+        prevArrow: '.offer__slider-prev',
+        totalCounter: '#total',
+        currentCounter: '#current',
+        wrapper: '.offer__slider-wrapper',
+        field: '.offer__slider-inner'
+    });
+}); 
