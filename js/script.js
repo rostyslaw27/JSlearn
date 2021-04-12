@@ -1,38 +1,25 @@
 'use strict';
 
-const inputRub = document.querySelector('#rub'),
-      inputUsd = document.querySelector('#usd');
+const number = 1;
 
-inputRub.addEventListener('input', () => {
-    const request = new XMLHttpRequest();
+// 1
+(function() {
+    let number = 2;
+    console.log(number);
+    console.log(number + 3);
+}());
 
-    request.open('GET', 'js/current.json');
-    request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    request.send();
+console.log(number);
 
-    request.addEventListener('readystatechange', () => {
-        if (request.readyState === 4 && request.status === 200) {
-            console.log(request.response);
-            const data = JSON.parse(request.response);
-            inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
-        } else {
-            inputUsd.value = 'Error';
-        }
-    });
+// 2
+const user = (function(){
+    const privat = function() {
+        console.log('I am privat!');
+    };
 
-    request.addEventListener('load', () => {
-        if (request.status === 200) {
-            console.log(request.response);
-            const data = JSON.parse(request.response);
-            inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
-        } else {
-            inputUsd.value = 'Error';
-        }
-    });
-    //status 404
-    //statusText Not Found
-    //response
-    //readyState
+    return {
+        sayHello: privat
+    };
+}());
 
-
-});
+user.sayHello();
