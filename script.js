@@ -1,33 +1,22 @@
-const btn = document.querySelector('.btn'),
-      elem = document.querySelector('.box');  
-let pos = 0;
+'use strict';
+let k = 0;
 
-// function myAnimation() {
-//     let pos = 0;
-
-//     const id = setInterval(frame, 10);
-//     function frame() {
-//         if (pos == 300) {
-//             clearInterval(id);
-//         } else {
-//             pos++;
-//             elem.style.top = pos + "px";
-//             elem.style.left = pos + 'px';
-//         }
-//     }
-// }
-
-function myAnimation() {
-    pos++;
-    elem.style.top = pos + "px";
-    elem.style.left = pos + 'px';
-
-    if (pos < 300) {
-        requestAnimationFrame(myAnimation);
+function count() {
+    for (let i = 0; i < 1e9; i++) {
+        k++;
     }
+    alert(k);
 }
 
-btn.addEventListener('click', () => requestAnimationFrame(myAnimation));
+count(); // робити декомпозицію
 
-let id = requestAnimationFrame(myAnimation);
-cancelAnimationFrame(id);
+// ЗАПИТАННЯ НА СПІВБЕСІДІ
+
+setTimeout(() => {
+    console.log(1);
+}, 0); // 0 == 4мс
+
+console.log(2);
+
+// 2
+// 1
